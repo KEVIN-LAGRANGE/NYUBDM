@@ -51,6 +51,6 @@ if __name__=='__main__':
         yield (t1[a], float(record[5][1:5]),int(100*Insecurity[int(record[0])]))
 
   sc = SparkContext()
-    sc.textFile(sys.argv[1] if len(sys.argv)>1 else 'book.txt') \
+  sc.textFile(sys.argv[1] if len(sys.argv)>1 else '') \
         .mapPartitionsWithIndex(extractSchools) \
         .saveAsTextFile(sys.argv[2] if len(sys.argv)>2 else 'output')
