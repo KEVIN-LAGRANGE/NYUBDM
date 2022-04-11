@@ -58,6 +58,6 @@ if __name__=='__main__':
         yield (t1[a], float(record[5][1:5]),int(100*Insecurity[int(record[0])]))
 
   sc = SparkContext()
-  sc.textFile('/tmp/bdm/keyfood_products.csv', use_unicode=True) \
+  sc.textFile('keyfood_products.csv', use_unicode=True) \
         .mapPartitionsWithIndex(extractSchools) \
         .saveAsTextFile('output')
