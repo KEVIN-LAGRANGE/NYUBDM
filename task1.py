@@ -29,13 +29,9 @@ import pyspark
 from pyspark import SparkContext
 import sys
 from pyspark.sql import SparkSession
-from pyspark.sql import functions as F
-from pyspark.sql import types as T
 
 
-
-if __name__=='__main__':
-  data = pd.read_csv('keyfood_sample_items.csv')
+data = pd.read_csv('keyfood_sample_items.csv')
   l = []
   for i in data["UPC code"]:
     l.append(i.split('-')[1])
@@ -56,6 +52,10 @@ if __name__=='__main__':
       if int(record[0]) in list(Insecurity.index) and a in l:
         yield (t1[a], float(record[5][1:5]),int(100*Insecurity[int(record[0])]))
 
+
+
+if __name__=='__main__':
+  
   sc = SparkContext()
   sc.textFile('/tmp/bdm/keyfood_products.csv', use_unicode=True) \
         .mapPartitionsWithIndex(extractSchools) \
