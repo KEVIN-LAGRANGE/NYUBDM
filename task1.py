@@ -15,17 +15,14 @@ Original file is located at
 """
 
 # Commented out IPython magic to ensure Python compatibility.
-!pip install IPython
+
 import csv
 import json
 import numpy as np
-import matplotlib.pyplot as plt
+
 
 import pandas as pd
-import IPython
-# %matplotlib inline
-IPython.display.set_matplotlib_formats('svg')
-pd.plotting.register_matplotlib_converters()
+
 
 
 import pyspark
