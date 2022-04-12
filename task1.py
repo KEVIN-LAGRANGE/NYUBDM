@@ -32,18 +32,19 @@ from pyspark.sql import SparkSession
 
 
 data = pd.read_csv('keyfood_sample_items.csv')
-  l = []
-  for i in data["UPC code"]:
+l = []
+for i in data["UPC code"]:
     l.append(i.split('-')[1])
-  data["UPC code"]=l
-  l1 = []
-  for i in data["Item Name"]:
+data["UPC code"]=l
+l1 = []
+for i in data["Item Name"]:
+    
     l1.append(i)
-  t1 = pd.Series(l1, index=l)
-  json_data = pd.read_json("keyfood_nyc_stores.json",orient = "columns")
-  json_data = pd.DataFrame(json_data.values.T, index=json_data.columns, columns=json_data.index)
-  Insecurity = json_data["foodInsecurity"]
-  def extractSchools(partId, part):
+t1 = pd.Series(l1, index=l)
+json_data = pd.read_json("keyfood_nyc_stores.json",orient = "columns")
+json_data = pd.DataFrame(json_data.values.T, index=json_data.columns, columns=json_data.index)
+Insecurity = json_data["foodInsecurity"]
+def extractSchools(partId, part):
     if partId==0:
         next(part)
     import csv
